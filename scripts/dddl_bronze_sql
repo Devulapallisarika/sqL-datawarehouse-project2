@@ -23,6 +23,13 @@ CREATE TABLE bronze.crm_cust_info (
     cst_create_date     DATE
 );
 GO
+BULK INSERT bronze.crm_cust_info
+from 'C:\Users\devul\Downloads\datasets(p2)\datasets\source_crm\cust_info.csv'
+WITH (
+ FIRSTROW = 2,
+ FIELDTERMINATOR = ',',
+ TABLOCK
+);
 
 IF OBJECT_ID('bronze.crm_prd_info', 'U') IS NOT NULL
     DROP TABLE bronze.crm_prd_info;
